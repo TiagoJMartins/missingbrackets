@@ -1,5 +1,59 @@
 #!/bin/bash -e
 
-hugo
-rsync -avz --delete public/ pi:~/projects/blog/public/
+DEFAULT_FILENAME=`date +%F`.missingbrackets.tar.gz
+
+die () {
+    echo -e >&2 "$@"
+    exit 1
+}
+
+show_help() {
+  echo "usage: deploy <command>"
+  echo
+  echo "tar    generate deployable artifact"
+  echo "pi     deploy to raspberry pi"
+  echo "help   see this help message"
+  echo "clean  cleans artifacts based on the default naming scheme"
+  echo
+  echo "'deploy -h' and 'deploy --help' also show this help message"
+  exit 0
+}
+
+if [[ -z "$1" ]]; then
+  show_help
+fi
+
+deploy_to_pi() {
+  hugo
+  rsync -avz --delete public/ pi:~/projects/blog/public/
+}
+
+build_artifact() {
+  FILE=${1:-"$DEFAULT_FILENAME"}
+
+  hugo
+  tar -czvf $FILE public/
+
+  echo "==> Artifact created as '$FILE'"
+  echo "==> Full path: $PWD/$FILE"
+}
+
+clean_artifacts() {
+  rm -v *.missingbrackets.tar.gz
+}
+
+case $1 in
+pi)
+  deploy_to_pi
+  ;;
+tar)
+  build_artifact $2
+  ;;
+clean)
+  clean_artifacts
+  ;;
+--help|-h|help|*)
+  show_help
+  ;;
+esac
 
