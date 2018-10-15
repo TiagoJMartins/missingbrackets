@@ -1,0 +1,62 @@
+baseURL                       = "https://missingbrackets.xyz/"
+title                         = "Missing Brackets"
+theme                         = "coder"
+languageCode                  = "en"
+defaultContentLanguage        = "en"
+paginate                      = 20
+canonifyURLs                  = true
+pygmentsStyle                 = "bw"
+pygmentsCodeFences            = true
+pygmentsCodeFencesGuessSyntax = true
+disableComments               = true
+googleAnalytics               = "UA-20857815-4"
+
+# disqusShortname = ""
+
+copyright = "asd"
+
+[params]
+    author        = "Tiago Martins"
+    info          = "DevOps Engineer"
+    description   = "DevOps is not a job title."
+    footercontent = "DevOps is not a job title."
+    keywords      = "blog,developer,tiago,martins,dev,ops,devops,personal,portfolio,curriculum"
+
+    favicon_32 = "/img/favicon.ico"
+    favicon_64 = "/img/favicon.ico"
+
+
+    hideCredits   = true
+    hideCopyright = true # @TODO: Enable when there's posts
+
+    rtl        = false
+    math       = true
+    custom_css = []
+
+# Social
+[[params.social]]
+    name   = "Github"
+    icon   = "fab fa-github fa-2x"
+    weight = 1
+    url    = "https://github.com/TiagoJMartins"
+[[params.social]]
+    name   = "LinkedIn"
+    icon   = "fab fa-linkedin fa-2x"
+    weight = 2
+    url    = "https://www.linkedin.com/in/tiagojfmartins"
+[[params.social]]
+    name   = "Instagram"
+    icon   = "fab fa-instagram fa-2x"
+    weight = 2
+    url    = "https://www.instagram.com/tiagojfmartins"
+
+# Menu
+#[[menu.main]]
+#    name   = "Blog"
+#    weight = 1
+#    url    = "/posts/"
+#[[menu.main]]
+#    name   = "About"
+#    weight = 2
+#    url    = "/about/"
+
